@@ -3,8 +3,8 @@ public class CtaCredito extends Cuenta{
     private double deficit;
     private int id;
 
-    public CtaCredito(double sal,double tasa1) {
-        super(sal);
+    public CtaCredito(double sal,double tasa1,String nombre, Fecha unafecha) {
+        super(nombre,unafecha,sal);
         this.tasa=tasa1;
     }
 

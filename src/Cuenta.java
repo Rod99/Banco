@@ -3,14 +3,15 @@ public class Cuenta {
     protected Fecha apertura;
 	protected Fecha ultima_consulta;
 
-    public Cuenta(double saldo) {
+    public Cuenta(double saldoa) {
+        saldo = saldoa;
+    }
+    
+
+    public Cuenta(String nombre, Fecha fechaApertura, double sal) {
 
     }
 
-    public Cuenta(String nom, Fecha fechaApertura){
-
-    }
-	
     public double consultar(){
         return this.saldo;
     } 
