@@ -1,36 +1,37 @@
-public class CtaAhorros extends Cuenta implements Impuestos{
+public class CtaAhorros extends Cuenta implements Impuestos {
 
     private double tasa;
     private int id;
 
-
-    public CtaAhorros(double saldoa, double tasa1) {
-        super(saldoa);
+    public CtaAhorros(String nom, Fecha apr, double saldoa, double tasa1){
+        super(nom, apr, saldoa);
         this.tasa = tasa1;
-    }
-    public double consultar()
-    {
-		this.ultima_consulta = UnaFechaxD;
-		if (this.apertura.devenegadoM(this.apertura, UnaFechaxD)) {
-			this.pagarISRmensual();
-			
-		}
-		if (this.apertura.devenegadoA(this.apertura, UnaFechaxD)) {
-			this.pagarISRanual();
-		}			
+        this.id = instancias;
     }
 
+    public double consultar(){
+		if (super.apertura.devenegadoM(super.apertura, UnaFechaxD)){
+            this.pagarISRmensual();
+            super.saldo += super.saldo*this.tasa;
+        }
+		if (super.apertura.devenegadoA(super.apertura, UnaFechaxD))
+			this.pagarISRanual();
+    }
+
+    @Override
+    public String toString(){
+        return "Cuenta: " + super.nombre + " -Cuenta de Ahorros "+ id + "- Saldo: $" + super.saldo +" MXN. Tasa de interes: "+ this.tasa*10 + "%";
+    }
 
     @Override
     public void pagarISRmensual() {
-		if (super.consultar() > 10000.00) {
+		if (super.saldo > 10000.00)
 			super.saldo = super.saldo - super.saldo*ISRm;
-		}
     }
 
     @Override
     public void pagarISRanual() {
-		if (super().consultar() > 50000.00)
-			this.saldo = this.saldo - this.saldo*ISRa;
+		if (super.saldo > 50000.00)
+            super.saldo = super.saldo - super.saldo*ISRa;
     }
 }
