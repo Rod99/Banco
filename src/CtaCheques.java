@@ -14,7 +14,7 @@ public class CtaCheques extends Cuenta {
     }
     @Override
     public void retirar(double monto){
-        if (apertura.getAnio() ) {
+        if (apertura) {
             if(monto > super.saldo){
                 if(monto > sobregiro + super.saldo){
                     System.out.println("No tienes dinero suficiente en tu saldo y tu sobregiro");
