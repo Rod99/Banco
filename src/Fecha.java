@@ -18,19 +18,21 @@ public class Fecha {
 	public int getAnio () {
 		return this.anio;
 	}
+	public void consulta(){
+        if(this.dia>=30){
+            this.dia=1;
+            this.mes++;
+        }else
+            this.dia++;
+	}
 	public int getDia () {
-		return this.dia;
+        return this.dia;
+    }
+	public boolean devenegadoM (Fecha f1, Fecha f2) { // Si ha pasado un mes
+		return (f1.getAnio() < f2.getAnio() || f1.getMes() < f2.getMes());
 	}
-	public boolean devenegadoM (Fecha f1, Fecha f2) {
-		if (f1.getAnio() < f2.getAnio()) {
-			return true;
-		}else{
-			int x = 30 - f1.getDia();
-			return (f2.getDia() + x >= 30);
-		}
-	}
-	public boolean devenegadoA (Fecha f1, Fecha f2) {
-		return (f1.getAnio() < f2.getAnio());
+	public boolean devenegadoA (Fecha f1, Fecha f2) { // Si ha pasado un año
+        return (f1.getAnio() < f2.getAnio());
 	}
 
     public void establecerFecha(int d, int m, int a) {
